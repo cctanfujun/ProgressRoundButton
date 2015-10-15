@@ -2,6 +2,7 @@ package com.xiaochen.progressroundbutton;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
+import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -15,8 +16,8 @@ import android.graphics.Shader;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.v4.view.animation.PathInterpolatorCompat;
 import android.util.AttributeSet;
-import android.view.animation.PathInterpolator;
 import android.widget.TextView;
 
 /**
@@ -34,6 +35,7 @@ public class AnimDownloadProgressButton extends TextView {
     private Paint mDot1Paint;
     //第二个点画笔
     private Paint mDot2Paint;
+
 
     //背景颜色
     private int mBackgroundColor;
@@ -144,12 +146,11 @@ public class AnimDownloadProgressButton extends TextView {
     }
 
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void setupAnimations() {
 
         //两个点向右移动动画
         ValueAnimator dotMoveAnimation = ValueAnimator.ofFloat(0, 20);
-        PathInterpolator pathInterpolator = new PathInterpolator(0.11f, 0f, 0.12f, 1f);
+        TimeInterpolator pathInterpolator = PathInterpolatorCompat.create(0.11f, 0f, 0.12f, 1f);
         dotMoveAnimation.setInterpolator(pathInterpolator);
         dotMoveAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -436,6 +437,39 @@ public class AnimDownloadProgressButton extends TextView {
 
     public void setButtonRadius(float buttonRadius) {
         mButtonRadius = buttonRadius;
+    }
+
+    public int getTextColor() {
+        return mTextColor;
+    }
+
+    @Override
+    public void setTextColor(int textColor) {
+        mTextColor = textColor;
+    }
+
+    public int getTextCoverColor() {
+        return mTextCoverColor;
+    }
+
+    public void setTextCoverColor(int textCoverColor) {
+        mTextCoverColor = textCoverColor;
+    }
+
+    public int getMinProgress() {
+        return mMinProgress;
+    }
+
+    public void setMinProgress(int minProgress) {
+        mMinProgress = minProgress;
+    }
+
+    public int getMaxProgress() {
+        return mMaxProgress;
+    }
+
+    public void setMaxProgress(int maxProgress) {
+        mMaxProgress = maxProgress;
     }
 
     @Override
