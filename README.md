@@ -33,14 +33,14 @@ you can define the button in xml like this:
 ```
 
 the Customized properties are in the follow table:
- 
- | Property        | Format           | Default  |  
- | ------------- |:-------------:| :-----:|  
- |progressbtn_radius  |float  |half of the button height  |  
- |progressbtn_backgroud_color|color | #6699ff |  
- |progressbtn_backgroud_second_color|color|Color.LTGRAY|  
- |progressbtn_text_color|color|progressbtn_backgroud_color|  
- |progressbtn_text_covercolor|color|Color.WHITE|  
+
+| Property        | Format           | Default  |  
+| ------------- |:-------------:| :-----:|  
+|progressbtn_radius  |float  |half of the button height  |  
+|progressbtn_backgroud_color|color | #6699ff |  
+|progressbtn_backgroud_second_color|color|Color.LTGRAY|  
+|progressbtn_text_color|color|progressbtn_backgroud_color|  
+|progressbtn_text_covercolor|color|Color.WHITE|  
   
  The follow picture make a clear explanation:
  
