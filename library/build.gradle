@@ -2,10 +2,10 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "0.9.0"
+version = "0.9.1"
 def siteUrl = 'https://github.com/cctanfujun/ProgressRoundButton'    // project homepage
 def gitUrl = 'https://github.com/cctanfujun/ProgressRoundButton.git' // project git
-group = "com.xiaochendev.progressroundbtn"
+group = "com.xiaochendev"
 
 android {
     compileSdkVersion 23
