@@ -1,5 +1,6 @@
 # ProgressRoundButton
-A Download Button with Progress
+
+A Smooth Download Button with Progress.
 
 ## Demo
 
@@ -33,18 +34,21 @@ you can define the button in xml like this:
 
 the Customized properties are in the follow table:
  
- | Property        | Format           | Default  |
- | ------------- |:-------------:| -----:|
- 
- |progressbtn_radius  |float  |half of the button height  |
- |progressbtn_backgroud_color|color | #6699ff |
- |progressbtn_backgroud_second_color|color|Color.LTGRAY|
- |progressbtn_text_color|color|progressbtn_backgroud_color|
- |progressbtn_text_covercolor|color|Color.WHITE|
+ | Property        | Format           | Default  |  
+ | ------------- |:-------------:| :-----:|  
+ |progressbtn_radius  |float  |half of the button height  |  
+ |progressbtn_backgroud_color|color | #6699ff |  
+ |progressbtn_backgroud_second_color|color|Color.LTGRAY|  
+ |progressbtn_text_color|color|progressbtn_backgroud_color|  
+ |progressbtn_text_covercolor|color|Color.WHITE|  
   
  The follow picture make a clear explanation:
  
  ![show](http://ww4.sinaimg.cn/large/0060lm7Tgw1ex1yr2b9xjj30eg0go75n.jpg)
+ 
+## Version
+
+* 0.9.1 Compatible with Android 4.0 
 
 ## About me 
 
