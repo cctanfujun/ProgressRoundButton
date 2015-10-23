@@ -33,6 +33,7 @@ you can define the button in xml like this:
 ```
 
 the Customized properties are in the follow table:
+git 
 
 | Property        | Format           | Default  |  
 | ------------- |:-------------:| :-----:|  
@@ -41,6 +42,7 @@ the Customized properties are in the follow table:
 |progressbtn_backgroud_second_color|color|Color.LTGRAY|  
 |progressbtn_text_color|color|progressbtn_backgroud_color|  
 |progressbtn_text_covercolor|color|Color.WHITE|  
+
   
  The follow picture make a clear explanation:
  
@@ -48,7 +50,7 @@ the Customized properties are in the follow table:
  
 ## Version
 
-* 0.9.1 Compatible with Android 4.0 
+* 0.9.1  
 
 ## About me 
 
