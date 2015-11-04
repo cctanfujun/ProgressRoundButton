@@ -45,6 +45,8 @@ public class AnimDownloadProgressButton extends TextView {
     private int mTextColor;
     //覆盖后颜色
     private int mTextCoverColor;
+    //文字大小
+    private float mAboveTextSize = 50;
 
 
     private float mProgress = -1;
@@ -123,7 +125,7 @@ public class AnimDownloadProgressButton extends TextView {
         //设置文字画笔
         mTextPaint = new Paint();
         mTextPaint.setAntiAlias(true);
-        mTextPaint.setTextSize(50f);
+        mTextPaint.setTextSize(mAboveTextSize);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             //解决文字有时候画不出问题
             setLayerType(LAYER_TYPE_SOFTWARE, mTextPaint);
@@ -408,7 +410,6 @@ public class AnimDownloadProgressButton extends TextView {
             mCurrentText = text + getResources().getString(R.string.downloaded, (int) progress);
             mToProgress = progress;
             if (mProgressAnimation.isRunning()) {
-                mProgressAnimation.resume();
                 mProgressAnimation.start();
             } else {
                 mProgressAnimation.start();
@@ -429,6 +430,16 @@ public class AnimDownloadProgressButton extends TextView {
     public void setProgress(float progress) {
         this.mProgress = progress;
 
+    }
+
+    /**
+     * Sometimes you should use the method to avoid memory leak
+     */
+    public void removeAllAnim() {
+        mDotAnimationSet.cancel();
+        mDotAnimationSet.removeAllListeners();
+        mProgressAnimation.cancel();
+        mProgressAnimation.removeAllListeners();
     }
 
     public float getButtonRadius() {
@@ -470,6 +481,17 @@ public class AnimDownloadProgressButton extends TextView {
 
     public void setMaxProgress(int maxProgress) {
         mMaxProgress = maxProgress;
+    }
+
+    @Override
+    public void setTextSize(float size) {
+        mAboveTextSize = size;
+        mTextPaint.setTextSize(size);
+    }
+
+    @Override
+    public float getTextSize() {
+        return mAboveTextSize;
     }
 
     @Override
