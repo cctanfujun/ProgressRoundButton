@@ -16,7 +16,7 @@ A Smooth Download Button with Progress.
  dependencies {
      compile fileTree(dir: 'libs', include: ['*.jar'])
      compile 'com.android.support:appcompat-v7:23.0.1'
-     compile 'com.xiaochendev.progressroundbtn:library:0.9.1'
+     compile 'com.xiaochendev.progressroundbtn:library:1.0.0'
  }
  ```
 #### step2 
@@ -51,6 +51,10 @@ git
 ## Version
 
 * 0.9.1  
+
+* 1.0.0   
+  Now you can set text size;  
+  Add Method removeAllAnim() to avoid memory leak;
 
 ## About me 
 
