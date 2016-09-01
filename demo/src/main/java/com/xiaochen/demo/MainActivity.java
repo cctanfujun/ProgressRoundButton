@@ -3,6 +3,7 @@ package com.xiaochen.demo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.xiaochen.progressroundbutton.AnimDownloadProgressButton;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = MainActivity.class.getSimpleName();
     AnimDownloadProgressButton mAnimDownloadProgressButton;
     Button mReset;
     TextView mDescription;
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
     private void showTheButton() {
         mAnimDownloadProgressButton.setState(AnimDownloadProgressButton.DOWNLOADING);
         mAnimDownloadProgressButton.setProgressText("下载中", mAnimDownloadProgressButton.getProgress() + 8);
+        Log.d(TAG, "showTheButton: " + mAnimDownloadProgressButton.getProgress());
         if (mAnimDownloadProgressButton.getProgress() + 10 > 100) {
             mAnimDownloadProgressButton.setState(AnimDownloadProgressButton.INSTALLING);
             mAnimDownloadProgressButton.setCurrentText("安装中");

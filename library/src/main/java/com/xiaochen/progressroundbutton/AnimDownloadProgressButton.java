@@ -406,7 +406,7 @@ public class AnimDownloadProgressButton extends TextView {
      */
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public void setProgressText(String text, float progress) {
-        if (progress >= mMinProgress && progress <= mMaxProgress) {
+        if (progress >= mMinProgress && progress < mMaxProgress) {
             mCurrentText = text + getResources().getString(R.string.downloaded, (int) progress);
             mToProgress = progress;
             if (mProgressAnimation.isRunning()) {
@@ -416,7 +416,7 @@ public class AnimDownloadProgressButton extends TextView {
             }
         } else if (progress < mMinProgress) {
             mProgress = 0;
-        } else if (progress > mMaxProgress) {
+        } else if (progress >= mMaxProgress) {
             mProgress = 100;
             mCurrentText = text + getResources().getString(R.string.downloaded, (int) mProgress);
             invalidate();

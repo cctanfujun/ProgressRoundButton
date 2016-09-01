@@ -50,6 +50,9 @@ git
  
 ## Version
 
+* 1.1.0
+  Fix the bug when setProgressText("something",100),first tiem getProgress() return 0;
+
 * 1.0.0   
   Now you can set text size;  
   Add Method removeAllAnim() to avoid memory leak;
