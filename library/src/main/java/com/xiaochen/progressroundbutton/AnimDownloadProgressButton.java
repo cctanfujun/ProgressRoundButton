@@ -38,7 +38,8 @@ public class AnimDownloadProgressButton extends TextView {
 
 
     //背景颜色
-    private int mBackgroundColor;
+    private int[] mBackgroundColor;
+    private int[] mOriginBackgroundColor;
     //下载中后半部分后面背景颜色
     private int mBackgroundSecondColor;
     //文字颜色
@@ -62,6 +63,7 @@ public class AnimDownloadProgressButton extends TextView {
     private float mDot2transX;
 
     private RectF mBackgroundBounds;
+    private LinearGradient mFillBgGradient;
     private LinearGradient mProgressBgGradient;
     private LinearGradient mProgressTextGradient;
 
@@ -80,6 +82,10 @@ public class AnimDownloadProgressButton extends TextView {
     //有点运动状态
     public static final int INSTALLING = 2;
 
+    private ButtonController mDefaultController;
+
+    private ButtonController mCustomerController;
+
 
     private int mState;
 
@@ -92,6 +98,7 @@ public class AnimDownloadProgressButton extends TextView {
         super(context, attrs);
         if (!isInEditMode()) {
             mContext = context;
+            initController();
             initAttrs(context, attrs);
             init();
             setupAnimations();
@@ -99,14 +106,56 @@ public class AnimDownloadProgressButton extends TextView {
 
     }
 
+    private void initController() {
+        mDefaultController = new DefaultButtonController();
+    }
+
+    @Override
+    protected void drawableStateChanged() {
+        super.drawableStateChanged();
+        ButtonController buttonController = switchController();
+        if (buttonController.enablePress()) {
+            if (mOriginBackgroundColor == null) {
+                mOriginBackgroundColor = new int[2];
+                mOriginBackgroundColor[0] = mBackgroundColor[0];
+                mOriginBackgroundColor[1] = mBackgroundColor[1];
+            }
+            if (this.isPressed()) {
+                int pressColorleft = buttonController.getPressedColor(mBackgroundColor[0]);
+                int pressColorright = buttonController.getPressedColor(mBackgroundColor[1]);
+                if (buttonController.enableGradient()) {
+                    initGradientColor(pressColorleft, pressColorright);
+                } else {
+                    initGradientColor(pressColorleft, pressColorleft);
+                }
+            } else {
+                if (buttonController.enableGradient()) {
+                    initGradientColor(mOriginBackgroundColor[0], mOriginBackgroundColor[1]);
+                } else {
+                    initGradientColor(mOriginBackgroundColor[0], mOriginBackgroundColor[0]);
+                }
+            }
+            invalidate();
+        }
+
+    }
+
     private void initAttrs(Context context, AttributeSet attrs) {
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AnimDownloadProgressButton);
-        mBackgroundColor = a.getColor(R.styleable.AnimDownloadProgressButton_progressbtn_backgroud_color, Color.parseColor("#6699ff"));
+        int bgColor = a.getColor(R.styleable.AnimDownloadProgressButton_progressbtn_backgroud_color, Color.parseColor("#6699ff"));
+        //初始化背景颜色数组
+        initGradientColor(bgColor, bgColor);
         mBackgroundSecondColor = a.getColor(R.styleable.AnimDownloadProgressButton_progressbtn_backgroud_second_color, Color.LTGRAY);
         mButtonRadius = a.getFloat(R.styleable.AnimDownloadProgressButton_progressbtn_radius, getMeasuredHeight() / 2);
-        mTextColor = a.getColor(R.styleable.AnimDownloadProgressButton_progressbtn_text_color, mBackgroundColor);
+        mTextColor = a.getColor(R.styleable.AnimDownloadProgressButton_progressbtn_text_color, bgColor);
         mTextCoverColor = a.getColor(R.styleable.AnimDownloadProgressButton_progressbtn_text_covercolor, Color.WHITE);
+        boolean enableGradient = a.getBoolean(R.styleable.AnimDownloadProgressButton_progressbtn_enable_gradient, false);
+        boolean enablePress = a.getBoolean(R.styleable.AnimDownloadProgressButton_progressbtn_enable_press, false);
+        ((DefaultButtonController) mDefaultController).setEnableGradient(enableGradient).setEnablePress(enablePress);
+        if (enableGradient){
+            initGradientColor(mDefaultController.getLighterColor(mBackgroundColor[0]),mBackgroundColor[0]);
+        }
         a.recycle();
     }
 
@@ -141,10 +190,19 @@ public class AnimDownloadProgressButton extends TextView {
         mDot2Paint.setAntiAlias(true);
         mDot2Paint.setTextSize(50f);
 
+
         //初始化状态设为NORMAL
         mState = NORMAL;
         invalidate();
 
+    }
+
+    //初始化渐变色
+    private int[] initGradientColor(int leftColor, int rightColor) {
+        mBackgroundColor = new int[2];
+        mBackgroundColor[0] = leftColor;
+        mBackgroundColor[1] = rightColor;
+        return mBackgroundColor;
     }
 
 
@@ -293,29 +351,58 @@ public class AnimDownloadProgressButton extends TextView {
         mBackgroundBounds.right = getMeasuredWidth() - 2;
         mBackgroundBounds.bottom = getMeasuredHeight() - 2;
 
+        ButtonController buttonController = switchController();
+
         //color
         switch (mState) {
             case NORMAL:
-                if (mBackgroundPaint.getShader() != null) {
-                    mBackgroundPaint.setShader(null);
+                if (buttonController.enableGradient()) {
+                    mFillBgGradient = new LinearGradient(0, getMeasuredHeight() / 2, getMeasuredWidth(), getMeasuredHeight() / 2,
+                            mBackgroundColor,
+                            null,
+                            Shader.TileMode.CLAMP);
+                    mBackgroundPaint.setShader(mFillBgGradient);
+                } else {
+                    if (mBackgroundPaint.getShader() != null) {
+                        mBackgroundPaint.setShader(null);
+                    }
+                    mBackgroundPaint.setColor(mBackgroundColor[0]);
                 }
-                mBackgroundPaint.setColor(mBackgroundColor);
                 canvas.drawRoundRect(mBackgroundBounds, mButtonRadius, mButtonRadius, mBackgroundPaint);
                 break;
             case DOWNLOADING:
-                mProgressPercent = mProgress / (mMaxProgress + 0f);
-                mProgressBgGradient = new LinearGradient(0, 0, getMeasuredWidth(), 0,
-                        new int[]{mBackgroundColor, mBackgroundSecondColor},
-                        new float[]{mProgressPercent, mProgressPercent + 0.001f},
-                        Shader.TileMode.CLAMP
-                );
-                mBackgroundPaint.setColor(mBackgroundColor);
-                mBackgroundPaint.setShader(mProgressBgGradient);
+                if (buttonController.enableGradient()) {
+                    mProgressPercent = mProgress / (mMaxProgress + 0f);
+                    int[] colorList = new int[]{mBackgroundColor[0], mBackgroundColor[1], mBackgroundSecondColor};
+                    mProgressBgGradient = new LinearGradient(0, 0, getMeasuredWidth(), 0,
+                            colorList,
+                            new float[]{0, mProgressPercent, mProgressPercent + 0.001f},
+                            Shader.TileMode.CLAMP
+                    );
+                    mBackgroundPaint.setShader(mProgressBgGradient);
+                } else {
+                    mProgressPercent = mProgress / (mMaxProgress + 0f);
+                    mProgressBgGradient = new LinearGradient(0, 0, getMeasuredWidth(), 0,
+                            new int[]{mBackgroundColor[0], mBackgroundSecondColor},
+                            new float[]{mProgressPercent, mProgressPercent + 0.001f},
+                            Shader.TileMode.CLAMP
+                    );
+                    mBackgroundPaint.setColor(mBackgroundColor[0]);
+                    mBackgroundPaint.setShader(mProgressBgGradient);
+                }
                 canvas.drawRoundRect(mBackgroundBounds, mButtonRadius, mButtonRadius, mBackgroundPaint);
                 break;
             case INSTALLING:
-                mBackgroundPaint.setShader(null);
-                mBackgroundPaint.setColor(mBackgroundColor);
+                if (buttonController.enableGradient()) {
+                    mFillBgGradient = new LinearGradient(0, getMeasuredHeight() / 2, getMeasuredWidth(), getMeasuredHeight() / 2,
+                            mBackgroundColor,
+                            null,
+                            Shader.TileMode.CLAMP);
+                    mBackgroundPaint.setShader(mFillBgGradient);
+                } else {
+                    mBackgroundPaint.setShader(null);
+                    mBackgroundPaint.setColor(mBackgroundColor[0]);
+                }
                 canvas.drawRoundRect(mBackgroundBounds, mButtonRadius, mButtonRadius, mBackgroundPaint);
                 break;
         }
@@ -370,6 +457,14 @@ public class AnimDownloadProgressButton extends TextView {
 
         }
 
+    }
+
+    private ButtonController switchController() {
+        if (mCustomerController != null) {
+            return mCustomerController;
+        } else {
+            return mDefaultController;
+        }
     }
 
     public int getState() {
@@ -483,6 +578,19 @@ public class AnimDownloadProgressButton extends TextView {
         mMaxProgress = maxProgress;
     }
 
+    public void enabelDefaultPress(boolean enable) {
+        if (mDefaultController != null) {
+            ((DefaultButtonController) mDefaultController).setEnablePress(enable);
+        }
+    }
+
+    public void enabelDefaultGradient(boolean enable) {
+        if (mDefaultController != null) {
+            ((DefaultButtonController) mDefaultController).setEnableGradient(enable);
+            initGradientColor(mDefaultController.getLighterColor(mBackgroundColor[0]),mBackgroundColor[0]);
+        }
+    }
+
     @Override
     public void setTextSize(float size) {
         mAboveTextSize = size;
@@ -492,6 +600,11 @@ public class AnimDownloadProgressButton extends TextView {
     @Override
     public float getTextSize() {
         return mAboveTextSize;
+    }
+
+    public AnimDownloadProgressButton setCustomerController(ButtonController customerController) {
+        mCustomerController = customerController;
+        return this;
     }
 
     @Override
@@ -549,6 +662,7 @@ public class AnimDownloadProgressButton extends TextView {
                 return new SavedState[size];
             }
         };
+
     }
 
 
