@@ -4,7 +4,7 @@ A Smooth Download Button with Progress.
 
 ## Demo
 
-![demo](http://ww1.sinaimg.cn/mw690/6ccf7929gw1f95m7u9fkeg208w0fanpm.gif)
+![demo](./img/Oct-26-2016 13-26-36.gif)
 
 ## Usage
 
