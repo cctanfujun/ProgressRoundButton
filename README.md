@@ -4,7 +4,7 @@ A Smooth Download Button with Progress.
 
 ## Demo
 
-![demo](http://ww1.sinaimg.cn/large/0060lm7Tgw1ewzhnz6143g30600aoe82.gif)
+![demo](http://ww1.sinaimg.cn/mw690/6ccf7929gw1f95m7u9fkeg208w0fanpm.gif)
 
 ## Usage
 
@@ -16,10 +16,10 @@ A Smooth Download Button with Progress.
  dependencies {
      compile fileTree(dir: 'libs', include: ['*.jar'])
      compile 'com.android.support:appcompat-v7:23.0.1'
-     compile 'com.xiaochendev.progressroundbtn:library:1.0.0'
+     compile 'com.xiaochendev.progressroundbtn:library:2.0.0'
  }
  ```
-#### step2 
+### step2 
 
 you can define the button in xml like this:
 
@@ -31,8 +31,26 @@ you can define the button in xml like this:
         app:progressbtn_backgroud_color="@android:color/holo_orange_light"
         app:progressbtn_backgroud_second_color="@android:color/holo_green_light"/>
 ```
+### advanced
+* If you want shadow and press effect，please use `AnimButton` instead of `AnimDownloadProgressButton` :
 
-the Customized properties are in the follow table:
+```xml
+<com.xiaochen.progressroundbutton.AnimButtonLayout
+            android:id="@+id/anim_btn3"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="40dp"
+            app:progressbtn_backgroud_color="@android:color/holo_blue_dark"
+            app:progressbtn_backgroud_second_color="@android:color/darker_gray"
+            app:progressbtn_enable_gradient="true"
+            app:progressbtn_enable_press="true"/>
+```
+
+* You can also implement your own `ButtonController`,so that you can controll gradient effect;
+
+
+
+The Customized properties are in the follow table:
 git 
 
 | Property        | Format           | Default  |  
@@ -42,13 +60,28 @@ git
 |progressbtn_backgroud_second_color|color|Color.LTGRAY|  
 |progressbtn_text_color|color|progressbtn_backgroud_color|  
 |progressbtn_text_covercolor|color|Color.WHITE|  
+|progressbtn_enable_press|boolean|false|  
+|progressbtn_enable_gradient|boolean|false|  
 
   
  The follow picture make a clear explanation:
  
  ![show](http://ww4.sinaimg.cn/large/0060lm7Tgw1ex1yr2b9xjj30eg0go75n.jpg)
  
+ open gradient
+ 
+ ![gradient](http://ww4.sinaimg.cn/mw690/6ccf7929gw1f96m1ejk01j208m01mjra.jpg)
+ 
+ use `AnimDownloadProgressButton`
+ 
+ ![shadow](http://ww2.sinaimg.cn/mw690/6ccf7929gw1f96m1f759gj208h01taa0.jpg)
+ 
 ## Version
+
+* 2.0.0 
+	Now you can use press effect;
+	Now you can use gradient effect;
+	Add AnimButtomLayout with shadow ，when you press the button will be small;
 
 * 1.1.0
   Fix the bug when setProgressText("something",100),first tiem getProgress() return 0;
@@ -63,6 +96,11 @@ git
 
 I am a developer in China，If you have any idea about this project，please [contact me](mailto:cctanfujun@163.com)
 ,Thank you!
+
+## 晓晨Android组
+这个是我的公众号，如果你有 Android 开发方面问题可以和我一起讨论，我每周或者每两周会发一两篇原创的Android文章，谢谢支持！
+
+
 
 ## License
 
