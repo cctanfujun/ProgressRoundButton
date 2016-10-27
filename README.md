@@ -32,7 +32,7 @@ you can define the button in xml like this:
         app:progressbtn_backgroud_second_color="@android:color/holo_green_light"/>
 ```
 ### advanced
-* If you want shadow and press effect，please use `AnimButton` instead of `AnimDownloadProgressButton` :
+* If you want shadow and press effect，please use `AnimButtonLayout` instead of `AnimDownloadProgressButton` :
 
 ```xml
 <com.xiaochen.progressroundbutton.AnimButtonLayout
@@ -72,7 +72,7 @@ git
  
  ![gradient](http://ww4.sinaimg.cn/mw690/6ccf7929gw1f96m1ejk01j208m01mjra.jpg)
  
- use `AnimDownloadProgressButton`
+ use `AnimButtonLayout`
  
  ![shadow](http://ww2.sinaimg.cn/mw690/6ccf7929gw1f96m1f759gj208h01taa0.jpg)
  
