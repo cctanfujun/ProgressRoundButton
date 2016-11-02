@@ -100,6 +100,8 @@ I am a developer in China，If you have any idea about this project，please [co
 ## 晓晨Android组
 这个是我的公众号，如果你有 Android 开发方面问题可以和我一起讨论，我每周或者每两周会发一两篇原创的Android文章，谢谢支持！
 
+![xiaochen588189](./img/wechat.jpg)
+
 
 
 ## License
