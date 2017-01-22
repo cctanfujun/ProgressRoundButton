@@ -102,6 +102,8 @@ public class AnimDownloadProgressButton extends TextView {
             initAttrs(context, attrs);
             init();
             setupAnimations();
+        }else {
+            initController();
         }
 
     }
