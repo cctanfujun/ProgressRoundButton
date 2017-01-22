@@ -15,6 +15,7 @@
         tools:context=".MainActivity">
 
         <com.xiaochen.progressroundbutton.AnimDownloadProgressButton
+            app:progressbtn_text_size="25"
             android:id="@+id/anim_btn"
             android:layout_width="match_parent"
             android:layout_height="40dp"
