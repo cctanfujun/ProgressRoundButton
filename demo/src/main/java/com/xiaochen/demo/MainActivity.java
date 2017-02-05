@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         mAnimDownloadProgressButton = (AnimDownloadProgressButton) findViewById(R.id.anim_btn);
         mAnimDownloadProgressButton.setCurrentText("安装");
-        mAnimDownloadProgressButton.setTextSize(60f);
+//        mAnimDownloadProgressButton.setTextSize(60f);
         mAnimDownloadProgressButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -102,6 +102,8 @@ public class AnimDownloadProgressButton extends TextView {
             initAttrs(context, attrs);
             init();
             setupAnimations();
+        }else {
+            initController();
         }
 
     }
@@ -148,6 +150,7 @@ public class AnimDownloadProgressButton extends TextView {
         initGradientColor(bgColor, bgColor);
         mBackgroundSecondColor = a.getColor(R.styleable.AnimDownloadProgressButton_progressbtn_backgroud_second_color, Color.LTGRAY);
         mButtonRadius = a.getFloat(R.styleable.AnimDownloadProgressButton_progressbtn_radius, getMeasuredHeight() / 2);
+        mAboveTextSize = a.getFloat(R.styleable.AnimDownloadProgressButton_progressbtn_text_size, 50);
         mTextColor = a.getColor(R.styleable.AnimDownloadProgressButton_progressbtn_text_color, bgColor);
         mTextCoverColor = a.getColor(R.styleable.AnimDownloadProgressButton_progressbtn_text_covercolor, Color.WHITE);
         boolean enableGradient = a.getBoolean(R.styleable.AnimDownloadProgressButton_progressbtn_enable_gradient, false);
@@ -183,12 +186,12 @@ public class AnimDownloadProgressButton extends TextView {
         //设置第一个点画笔
         mDot1Paint = new Paint();
         mDot1Paint.setAntiAlias(true);
-        mDot1Paint.setTextSize(50f);
+        mDot1Paint.setTextSize(mAboveTextSize);
 
         //设置第二个点画笔
         mDot2Paint = new Paint();
         mDot2Paint.setAntiAlias(true);
-        mDot2Paint.setTextSize(50f);
+        mDot2Paint.setTextSize(mAboveTextSize);
 
 
         //初始化状态设为NORMAL
