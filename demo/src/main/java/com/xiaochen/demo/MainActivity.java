@@ -1,5 +1,6 @@
 package com.xiaochen.demo;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -36,6 +37,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showTheButton(R.id.anim_btn);
+            }
+        });
+
+        mAnimDownloadProgressButton.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    mAnimDownloadProgressButton.setProgressBtnBackgroundColor(Color.parseColor("#0000ff"));
+                }else {
+                    mAnimDownloadProgressButton.setProgressBtnBackgroundColor(Color.parseColor("#00ff00"));
+                }
             }
         });
 
