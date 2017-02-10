@@ -540,6 +540,17 @@ public class AnimDownloadProgressButton extends TextView {
         mProgressAnimation.removeAllListeners();
     }
 
+
+    public void setProgressBtnBackgroundColor(int color){
+        initGradientColor(color, color);
+    }
+
+
+    public void setProgressBtnBackgroundSecondColor(int color){
+
+        mBackgroundSecondColor = color;
+    }
+
     public float getButtonRadius() {
         return mButtonRadius;
     }
