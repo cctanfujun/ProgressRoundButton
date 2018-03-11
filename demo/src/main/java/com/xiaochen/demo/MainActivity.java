@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mDescription.setText(" This is a DownloadProgressButton library with Animation," +
-                "you can change radius,textColor,coveredTextColor,BackgroudColor,etc in" +
+                "you can change radius,textColor,coveredTextColor,backgroundColor,etc in" +
                 " your code or just in xml.\n\n" +
                 "The library is open source in github https://github.com/cctanfujun/ProgressRoundButton .\n" +
                 "Hope you like it ");

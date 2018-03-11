@@ -21,16 +21,16 @@
             android:id="@+id/anim_btn"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            app:progressbtn_backgroud_color="@android:color/holo_orange_light"
-            app:progressbtn_backgroud_second_color="@android:color/darker_gray"/>
+            app:progressbtn_background_color="@android:color/holo_orange_light"
+            app:progressbtn_background_second_color="@android:color/darker_gray"/>
 
         <com.xiaochen.progressroundbutton.AnimDownloadProgressButton
             android:id="@+id/anim_btn2"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="40dp"
-            app:progressbtn_backgroud_color="@android:color/holo_green_dark"
-            app:progressbtn_backgroud_second_color="@android:color/darker_gray"
+            app:progressbtn_background_color="@android:color/holo_green_dark"
+            app:progressbtn_background_second_color="@android:color/darker_gray"
             app:progressbtn_enable_gradient="true"
             app:progressbtn_enable_press="true"/>
 
@@ -39,8 +39,8 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="40dp"
-            app:progressbtn_backgroud_color="@android:color/holo_blue_dark"
-            app:progressbtn_backgroud_second_color="@android:color/darker_gray"
+            app:progressbtn_background_color="@android:color/holo_blue_dark"
+            app:progressbtn_background_second_color="@android:color/darker_gray"
             app:progressbtn_enable_gradient="true"
             app:progressbtn_enable_press="true"/>
 

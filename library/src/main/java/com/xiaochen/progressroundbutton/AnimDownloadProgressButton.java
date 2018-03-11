@@ -145,10 +145,10 @@ public class AnimDownloadProgressButton extends TextView {
     private void initAttrs(Context context, AttributeSet attrs) {
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AnimDownloadProgressButton);
-        int bgColor = a.getColor(R.styleable.AnimDownloadProgressButton_progressbtn_backgroud_color, Color.parseColor("#6699ff"));
+        int bgColor = a.getColor(R.styleable.AnimDownloadProgressButton_progressbtn_background_color, Color.parseColor("#6699ff"));
         //初始化背景颜色数组
         initGradientColor(bgColor, bgColor);
-        mBackgroundSecondColor = a.getColor(R.styleable.AnimDownloadProgressButton_progressbtn_backgroud_second_color, Color.LTGRAY);
+        mBackgroundSecondColor = a.getColor(R.styleable.AnimDownloadProgressButton_progressbtn_background_second_color, Color.LTGRAY);
         mButtonRadius = a.getFloat(R.styleable.AnimDownloadProgressButton_progressbtn_radius, getMeasuredHeight() / 2);
         mAboveTextSize = a.getFloat(R.styleable.AnimDownloadProgressButton_progressbtn_text_size, 50);
         mTextColor = a.getColor(R.styleable.AnimDownloadProgressButton_progressbtn_text_color, bgColor);
