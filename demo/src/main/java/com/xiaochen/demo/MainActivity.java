@@ -26,11 +26,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mReset = (Button) findViewById(R.id.reset);
-        mSeekBar = (SeekBar) findViewById(R.id.seekBar);
-        mDescription = (TextView) findViewById(R.id.description);
+        mReset = findViewById(R.id.reset);
+        mSeekBar = findViewById(R.id.seekBar);
+        mDescription = findViewById(R.id.description);
 
-        mAnimDownloadProgressButton = (AnimDownloadProgressButton) findViewById(R.id.anim_btn);
+        mAnimDownloadProgressButton = findViewById(R.id.anim_btn);
         mAnimDownloadProgressButton.setCurrentText("安装");
 //        mAnimDownloadProgressButton.setTextSize(60f);
         mAnimDownloadProgressButton.setOnClickListener(new View.OnClickListener() {
@@ -45,13 +45,13 @@ public class MainActivity extends AppCompatActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
                     mAnimDownloadProgressButton.setProgressBtnBackgroundColor(Color.parseColor("#0000ff"));
-                }else {
+                } else {
                     mAnimDownloadProgressButton.setProgressBtnBackgroundColor(Color.parseColor("#00ff00"));
                 }
             }
         });
 
-        mAnimDownloadProgressButton2 = (AnimDownloadProgressButton) findViewById(R.id.anim_btn2);
+        mAnimDownloadProgressButton2 = findViewById(R.id.anim_btn2);
         mAnimDownloadProgressButton2.setCurrentText("安装");
         mAnimDownloadProgressButton2.setTextSize(60f);
         mAnimDownloadProgressButton2.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mAnimButtonLayout = (AnimButtonLayout) findViewById(R.id.anim_btn3);
+        mAnimButtonLayout = findViewById(R.id.anim_btn3);
         mAnimButtonLayout.setCurrentText("安装");
         mAnimButtonLayout.setTextSize(60f);
         mAnimButtonLayout.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mDescription.setText(" This is a DownloadProgressButton library with Animation," +
-                "you can change radius,textColor,coveredTextColor,BackgroudColor,etc in" +
+                "you can change radius,textColor,coveredTextColor,backgroundColor,etc in" +
                 " your code or just in xml.\n\n" +
                 "The library is open source in github https://github.com/cctanfujun/ProgressRoundButton .\n" +
                 "Hope you like it ");

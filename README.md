@@ -28,8 +28,8 @@ you can define the button in xml like this:
         android:id="@+id/anim_btn"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        app:progressbtn_backgroud_color="@android:color/holo_orange_light"
-        app:progressbtn_backgroud_second_color="@android:color/holo_green_light"/>
+        app:progressbtn_background_color="@android:color/holo_orange_light"
+        app:progressbtn_background_second_color="@android:color/holo_green_light"/>
 ```
 ### advanced
 * If you want shadow and press effect，please use `AnimButtonLayout` instead of `AnimDownloadProgressButton` :
@@ -40,8 +40,8 @@ you can define the button in xml like this:
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="40dp"
-            app:progressbtn_backgroud_color="@android:color/holo_blue_dark"
-            app:progressbtn_backgroud_second_color="@android:color/darker_gray"
+            app:progressbtn_background_color="@android:color/holo_blue_dark"
+            app:progressbtn_background_second_color="@android:color/darker_gray"
             app:progressbtn_enable_gradient="true"
             app:progressbtn_enable_press="true"/>
 ```
@@ -56,9 +56,9 @@ git
 | Property        | Format           | Default  |  
 | ------------- |:-------------:| :-----:|  
 |progressbtn_radius  |float  |half of the button height  |  
-|progressbtn_backgroud_color|color | #6699ff |  
-|progressbtn_backgroud_second_color|color|Color.LTGRAY|  
-|progressbtn_text_color|color|progressbtn_backgroud_color|  
+|progressbtn_background_color|color | #6699ff |
+|progressbtn_background_second_color|color|Color.LTGRAY|
+|progressbtn_text_color|color|progressbtn_background_color|
 |progressbtn_text_covercolor|color|Color.WHITE|  
 |progressbtn_enable_press|boolean|false|  
 |progressbtn_enable_gradient|boolean|false|  

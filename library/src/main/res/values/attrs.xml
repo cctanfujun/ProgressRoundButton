@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="AnimDownloadProgressButton">
-        <attr name="progressbtn_radius" format="float" />
-        <attr name="progressbtn_backgroud_color" format="color" />
-        <attr name="progressbtn_backgroud_second_color" format="color" />
-        <attr name="progressbtn_text_size" format="float" />
-        <attr name="progressbtn_text_color" format="color" />
-        <attr name="progressbtn_text_covercolor" format="color" />
+        <attr name="progressbtn_radius" format="float"/>
+        <attr name="progressbtn_background_color" format="color"/>
+        <attr name="progressbtn_background_second_color" format="color"/>
+        <attr name="progressbtn_text_size" format="float"/>
+        <attr name="progressbtn_text_color" format="color"/>
+        <attr name="progressbtn_text_covercolor" format="color"/>
         <attr name="progressbtn_enable_press" format="boolean"/>
         <attr name="progressbtn_enable_gradient" format="boolean"/>
     </declare-styleable>

@@ -102,7 +102,7 @@ public class AnimDownloadProgressButton extends TextView {
             initAttrs(context, attrs);
             init();
             setupAnimations();
-        }else {
+        } else {
             initController();
         }
 
@@ -145,10 +145,10 @@ public class AnimDownloadProgressButton extends TextView {
     private void initAttrs(Context context, AttributeSet attrs) {
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AnimDownloadProgressButton);
-        int bgColor = a.getColor(R.styleable.AnimDownloadProgressButton_progressbtn_backgroud_color, Color.parseColor("#6699ff"));
+        int bgColor = a.getColor(R.styleable.AnimDownloadProgressButton_progressbtn_background_color, Color.parseColor("#6699ff"));
         //初始化背景颜色数组
         initGradientColor(bgColor, bgColor);
-        mBackgroundSecondColor = a.getColor(R.styleable.AnimDownloadProgressButton_progressbtn_backgroud_second_color, Color.LTGRAY);
+        mBackgroundSecondColor = a.getColor(R.styleable.AnimDownloadProgressButton_progressbtn_background_second_color, Color.LTGRAY);
         mButtonRadius = a.getFloat(R.styleable.AnimDownloadProgressButton_progressbtn_radius, getMeasuredHeight() / 2);
         mAboveTextSize = a.getFloat(R.styleable.AnimDownloadProgressButton_progressbtn_text_size, 50);
         mTextColor = a.getColor(R.styleable.AnimDownloadProgressButton_progressbtn_text_color, bgColor);
@@ -156,8 +156,8 @@ public class AnimDownloadProgressButton extends TextView {
         boolean enableGradient = a.getBoolean(R.styleable.AnimDownloadProgressButton_progressbtn_enable_gradient, false);
         boolean enablePress = a.getBoolean(R.styleable.AnimDownloadProgressButton_progressbtn_enable_press, false);
         ((DefaultButtonController) mDefaultController).setEnableGradient(enableGradient).setEnablePress(enablePress);
-        if (enableGradient){
-            initGradientColor(mDefaultController.getLighterColor(mBackgroundColor[0]),mBackgroundColor[0]);
+        if (enableGradient) {
+            initGradientColor(mDefaultController.getLighterColor(mBackgroundColor[0]), mBackgroundColor[0]);
         }
         a.recycle();
     }
@@ -541,12 +541,12 @@ public class AnimDownloadProgressButton extends TextView {
     }
 
 
-    public void setProgressBtnBackgroundColor(int color){
+    public void setProgressBtnBackgroundColor(int color) {
         initGradientColor(color, color);
     }
 
 
-    public void setProgressBtnBackgroundSecondColor(int color){
+    public void setProgressBtnBackgroundSecondColor(int color) {
 
         mBackgroundSecondColor = color;
     }
@@ -601,7 +601,7 @@ public class AnimDownloadProgressButton extends TextView {
     public void enabelDefaultGradient(boolean enable) {
         if (mDefaultController != null) {
             ((DefaultButtonController) mDefaultController).setEnableGradient(enable);
-            initGradientColor(mDefaultController.getLighterColor(mBackgroundColor[0]),mBackgroundColor[0]);
+            initGradientColor(mDefaultController.getLighterColor(mBackgroundColor[0]), mBackgroundColor[0]);
         }
     }
 
